@@ -247,7 +247,16 @@ def search_pa_list(src: List[str]) -> List[str]:
         a list of answers. Will be ["I don't understand"] if it finds no matches and
         ["No answers"] if it finds a match but no answers
     """
-    pass
+    for pat, act in pa_list:
+        mat=match(pat,src)
+        # print(pat)
+        # print(src)
+        # print(act)
+        if mat is not None:
+            answer=act(mat)
+            print(answer)
+            return answer if answer else ["No answers"]
+    return ["I don't understand"]    
 
 
 def query_loop() -> None:

@@ -434,5 +434,16 @@ movie_db: List[Tuple[str, str, int, List[str]]] = [
             "delroy lindo",
             "spike lee",
         ],
+    ),
+    (
+        "silence of the lambs",  # title
+        "jonathan demme",  # director
+        1991,  # year
+        [
+            "anthony hopkins",
+            "jodie foster",
+            "ted levine",
+            "brooke smith",
+        ],  # actors/actresses
     )
 ]
