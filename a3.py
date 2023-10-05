@@ -231,6 +231,7 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("who acted in %"), actors_by_title),
     (str.split("when was % made"), year_by_title),
     (str.split("in what movies did % appear"), title_by_actor),
+    (str.split("what movies has % acted in"), title_by_actor),
     (["bye"], bye_action),
 ]
 
@@ -293,7 +294,8 @@ if __name__ == "__main__":
     assert isinstance(actors_by_title(["jaws"]), list), "actors_by_title not returning a list"
     assert isinstance(year_by_title(["jaws"]), list), "year_by_title not returning a list"
     assert isinstance(title_by_actor(["orson welles"]), list), "title_by_actor not returning a list"
-    
+    assert isinstance(title_by_director(["jonathan demme"]), list), "title_by_director not returning a list"
+
     assert sorted(title_by_year(["1974"])) == sorted(
         ["amarcord", "chinatown"]
     ), "failed title_by_year test"
@@ -337,5 +339,8 @@ if __name__ == "__main__":
     assert sorted(
         search_pa_list(["what", "movies", "were", "made", "in", "2020"])
     ) == sorted(["No answers"]), "failed search_pa_list test 3"
+    assert sorted(title_by_director(["jonathan demme"])) == sorted(
+        ["silence of the lambs"]
+    ), "failed title_by_director test"
 
     print("All tests passed!")
